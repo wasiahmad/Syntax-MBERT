@@ -1,4 +1,4 @@
-# Syntax-MBERT
+# Syntax-augmented Multilingual BERT
 Official code release of our ACL 2021 work, [Syntax-augmented Multilingual BERT for Cross-lingual Transfer](https://aclanthology.org/2021.acl-long.350).
 
 **[Notes]**
