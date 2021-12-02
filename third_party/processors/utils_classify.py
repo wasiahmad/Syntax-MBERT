@@ -380,9 +380,9 @@ def convert_examples_to_features(
             text_a_b_deptags += trunc_text_b_deptags + [tokenizer.sep_token]
 
             pos_tag_ids = upos_to_id(text_a_b_upos, tokenizer=str(type(tokenizer)))
-            assert len(input_ids) == len(pos_tag_ids)
+            # assert len(input_ids) == len(pos_tag_ids) # to early to assert 
             dep_tag_ids = deptag_to_id(text_a_b_deptags, tokenizer=str(type(tokenizer)))
-            assert len(input_ids) == len(dep_tag_ids)
+            # assert len(input_ids) == len(dep_tag_ids) # to early to assert
 
             if pad_on_left:
                 pos_tag_ids = ([0] * padding_length) + pos_tag_ids
@@ -391,6 +391,8 @@ def convert_examples_to_features(
                 pos_tag_ids = pos_tag_ids + ([0] * padding_length)
                 dep_tag_ids = dep_tag_ids + ([0] * padding_length)
 
+            assert len(input_ids) == len(pos_tag_ids) # you should assert after padding
+            assert len(input_ids) == len(dep_tag_ids) # you should assert after padding
             assert len(dep_tag_ids) == max_length
             assert len(pos_tag_ids) == max_length
             one_ex_features.tag_ids = pos_tag_ids
